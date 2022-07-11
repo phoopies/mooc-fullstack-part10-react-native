@@ -9,13 +9,15 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     height: Constants.statusBarHeight === 0 ? 50 : Constants.statusBarHeight,
     paddingLeft: 20,
+    gap: 20,
     backgroundColor: theme.colors.primary,
   },
 });
 
 const AppBar = () => {
   return <Stack row={true} style={styles.container}>
-    <AppBarTab title={'Repositories'} />
+    <AppBarTab title={'Repositories'} route={'/'}/>
+    <AppBarTab title={'Sign in'} route={'/signin'}/>
   </Stack>;
 };
 
