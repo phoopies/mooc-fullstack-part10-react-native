@@ -1,24 +1,31 @@
-import { StyleSheet } from 'react-native';
-import Constants from 'expo-constants';
-import theme from '../../theme';
-import AppBarTab from './AppBarTab';
-import Stack from '../Stack';
+import { ScrollView, StyleSheet } from "react-native";
+import Constants from "expo-constants";
+import theme from "../../theme";
+import AppBarTab from "./AppBarTab";
+import Stack from "../Stack";
 
 const styles = StyleSheet.create({
   container: {
-    alignItems: 'center',
     height: Constants.statusBarHeight === 0 ? 50 : Constants.statusBarHeight,
-    paddingLeft: 20,
-    gap: 20,
     backgroundColor: theme.colors.primary,
+  },
+  scrollView: {
+    display: "flex",
+    paddingHorizontal: 20,
+    alignItems: "center",
+    gap: 20,
   },
 });
 
 const AppBar = () => {
-  return <Stack row={true} style={styles.container}>
-    <AppBarTab title={'Repositories'} route={'/'}/>
-    <AppBarTab title={'Sign in'} route={'/signin'}/>
-  </Stack>;
+  return (
+    <Stack row style={styles.container}>
+      <ScrollView contentContainerStyle={styles.scrollView} horizontal>
+        <AppBarTab title={"Repositories"} route={"/"} />
+        <AppBarTab title={"Sign in"} route={"/signin"} />
+      </ScrollView>
+    </Stack>
+  );
 };
 
 export default AppBar;
