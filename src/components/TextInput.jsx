@@ -9,7 +9,9 @@ const styles = StyleSheet.create({
     backgroundColor: theme.colors.backgroundSecondary,
   },
   error: {
-    border: '1px solid ' + theme.colors.error
+    borderColor: theme.colors.error,
+    borderWidth: 1,
+    borderStyle: 'solid'
   }
 });
 

@@ -8,12 +8,14 @@ const RepositoryItemDetails = ({ item }) => {
     container: {
       backgroundColor: theme.colors.backgroundSecondary,
       padding: 5,
-      gap: 15,
+    },
+    detailContainer: {
+      marginLeft: 15,
     },
     avatar: {
       width: 66,
       height: 66,
-      borderRadius: "50%",
+      borderRadius: 50,
     },
     language: {
       backgroundColor: theme.colors.secondary,
@@ -26,7 +28,7 @@ const RepositoryItemDetails = ({ item }) => {
   return (
     <Stack style={styles.container} row>
       <Image source={{ uri: item.ownerAvatarUrl }} style={styles.avatar} />
-      <Stack>
+      <Stack style={styles.detailContainer}>
         <Text fontWeight="bold" fontSize="subheading">
           {item.fullName}
         </Text>

@@ -6,23 +6,27 @@ import Stack from "../Stack";
 
 const styles = StyleSheet.create({
   container: {
-    height: Constants.statusBarHeight === 0 ? 50 : Constants.statusBarHeight,
+    marginTop: Constants.statusBarHeight,
+    paddingVertical: 5,
     backgroundColor: theme.colors.primary,
   },
   scrollView: {
     display: "flex",
-    paddingHorizontal: 20,
+    paddingHorizontal: 5,
     alignItems: "center",
-    gap: 20,
+    // gap: 20,
   },
+  item: {
+    marginLeft: 15,
+  }
 });
 
 const AppBar = () => {
   return (
     <Stack row style={styles.container}>
       <ScrollView contentContainerStyle={styles.scrollView} horizontal>
-        <AppBarTab title={"Repositories"} route={"/"} />
-        <AppBarTab title={"Sign in"} route={"/signin"} />
+        <AppBarTab style={styles.item} title={"Repositories"} route={"/"} />
+        <AppBarTab style={styles.item} title={"Sign in"} route={"/signin"} />
       </ScrollView>
     </Stack>
   );

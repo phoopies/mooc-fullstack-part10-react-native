@@ -25,7 +25,7 @@ const RepositoryItemExtraDetails = ({ item }) => {
   const styles = StyleSheet.create({
     container: {
       backgroundColor: theme.colors.backgroundSecondary,
-      gap: 15,
+      // gap: 15,
       justifyContent: "space-evenly",
     },
   });
