@@ -1,9 +1,7 @@
-import { Pressable, StyleSheet } from "react-native";
-import theme from "../../theme";
+import { StyleSheet } from "react-native";
 import Button from "../Button";
 import FormikTextInput from "../FormikTextInput";
 import Stack from "../Stack";
-import Text from "../Text";
 
 const SignInForm = ({ onSubmit }) => {
   const styles = StyleSheet.create({
