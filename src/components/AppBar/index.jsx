@@ -17,7 +17,7 @@ const styles = StyleSheet.create({
     // gap: 20,
   },
   item: {
-    marginLeft: 15,
+    padding: 15
   }
 });
 
