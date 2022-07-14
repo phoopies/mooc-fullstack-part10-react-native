@@ -2,7 +2,7 @@ import Text from "../Text";
 import Stack from "../Stack";
 import { StyleSheet } from "react-native";
 import theme from "../../theme";
-import { prettifyNumber } from "../../utils/common";
+import { prettifyNumber } from "../../utils/misc";
 
 const Detail = ({ value, label }) => {
   const dStyles = StyleSheet.create({
