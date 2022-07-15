@@ -3,6 +3,7 @@ import Constants from "expo-constants";
 import theme from "../../theme";
 import AppBarTab from "./AppBarTab";
 import Stack from "../Stack";
+import useAuthorizedUser from "../../hooks/useAuthorizedUser";
 
 const styles = StyleSheet.create({
   container: {
@@ -21,12 +22,18 @@ const styles = StyleSheet.create({
   }
 });
 
+
 const AppBar = () => {
+  const { user, loading } = useAuthorizedUser();
+
   return (
     <Stack row style={styles.container}>
       <ScrollView contentContainerStyle={styles.scrollView} horizontal>
         <AppBarTab style={styles.item} title={"Repositories"} route={"/"} />
-        <AppBarTab style={styles.item} title={"Sign in"} route={"/signin"} />
+        {!loading && (user ?
+           <AppBarTab style={styles.item} title={"Sign out"} route={"/signout"} />
+          : <AppBarTab style={styles.item} title={"Sign in"} route={"/signin"} />
+        )}
       </ScrollView>
     </Stack>
   );
