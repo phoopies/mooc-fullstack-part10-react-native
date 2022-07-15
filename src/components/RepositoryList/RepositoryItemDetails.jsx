@@ -3,7 +3,7 @@ import Stack from "../Stack";
 import { Image, StyleSheet } from "react-native";
 import theme from "../../theme";
 
-const RepositoryItemDetails = ({ item }) => {
+const RepositoryItemDetails = ({ item, ...props }) => {
   const styles = StyleSheet.create({
     container: {
       backgroundColor: theme.colors.backgroundSecondary,
@@ -26,7 +26,7 @@ const RepositoryItemDetails = ({ item }) => {
   });
 
   return (
-    <Stack style={styles.container} row>
+    <Stack style={styles.container} row {...props}>
       <Image source={{ uri: item.ownerAvatarUrl }} style={styles.avatar} />
       <Stack style={styles.detailContainer}>
         <Text fontWeight="bold" fontSize="subheading">

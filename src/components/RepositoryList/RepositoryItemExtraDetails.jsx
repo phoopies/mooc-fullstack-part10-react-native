@@ -14,14 +14,14 @@ const Detail = ({ value, label }) => {
     },
   });
   return (
-    <Stack style={dStyles.container}>
+    <Stack style={dStyles.container} testID={label}>
       <Text>{prettifyNumber(value)}</Text>
       <Text color="textSecondary">{label}</Text>
     </Stack>
   );
 };
 
-const RepositoryItemExtraDetails = ({ item }) => {
+const RepositoryItemExtraDetails = ({ item, ...props }) => {
   const styles = StyleSheet.create({
     container: {
       backgroundColor: theme.colors.backgroundSecondary,
@@ -31,7 +31,7 @@ const RepositoryItemExtraDetails = ({ item }) => {
   });
 
   return (
-      <Stack style={[styles.container, styles.details]} row>
+      <Stack style={[styles.container, styles.details]} row {...props}>
         <Detail value={item.stargazersCount} label="stars" />
         <Detail value={item.forksCount} label="forks" />
         <Detail value={item.reviewCount} label="reviews" />

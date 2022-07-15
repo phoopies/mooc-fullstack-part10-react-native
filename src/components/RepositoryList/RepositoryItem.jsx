@@ -13,9 +13,9 @@ const RepositoryItem = ({ item }) => {
   });
 
   return (
-    <Stack style={styles.container}>
-      <RepositoryItemDetails item={item} />
-      <RepositoryItemExtraDetails item={item} />
+    <Stack style={styles.container} >
+      <RepositoryItemDetails testID="repositoryItemDetails" item={item} />
+      <RepositoryItemExtraDetails testID="repositoryItemExtraDetails" item={item} />
     </Stack>
   );
 };
