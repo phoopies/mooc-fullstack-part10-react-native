@@ -35,8 +35,11 @@ const AppBar = () => {
         <AppBarTab style={styles.item} title="Create a review" route="/review" />
         <AppBarTab style={styles.item} title={"Sign out"} route={"/signout"} />
         </>
-           
-          : <AppBarTab style={styles.item} title={"Sign in"} route={"/signin"} />
+          :
+          <> 
+          <AppBarTab style={styles.item} title={"Sign in"} route={"/signin"} />
+          <AppBarTab style={styles.item} title="Sign up" route="/signup" /> 
+          </>
         )}
       </ScrollView>
     </Stack>
