@@ -31,7 +31,11 @@ const AppBar = () => {
       <ScrollView contentContainerStyle={styles.scrollView} horizontal>
         <AppBarTab style={styles.item} title={"Repositories"} route={"/"} />
         {!loading && (user ?
-           <AppBarTab style={styles.item} title={"Sign out"} route={"/signout"} />
+        <>
+        <AppBarTab style={styles.item} title="Create a review" route="/review" />
+        <AppBarTab style={styles.item} title={"Sign out"} route={"/signout"} />
+        </>
+           
           : <AppBarTab style={styles.item} title={"Sign in"} route={"/signin"} />
         )}
       </ScrollView>
