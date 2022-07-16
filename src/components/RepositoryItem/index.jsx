@@ -27,7 +27,7 @@ const RepositoryItem = ({ item, displayButton }) => {
   }
 
   return (
-    <Stack style={styles.container} >
+    <Stack style={styles.container}>
       <RepositoryItemDetails testID="repositoryItemDetails" item={item} />
       <RepositoryItemExtraDetails testID="repositoryItemExtraDetails" item={item} />
       {displayButton && <Pressable style={styles.button} onPress={onPress}>

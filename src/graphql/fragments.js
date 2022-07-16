@@ -1,4 +1,4 @@
-import { gql } from "@apollo/client";
+import { gql } from '@apollo/client';
 
 export const REPOSITORY_INFO = gql`
   fragment RepositoryInfo on Repository {
@@ -12,4 +12,26 @@ export const REPOSITORY_INFO = gql`
     description
     language
   }
-`
+`;
+
+export const REPOSITORY_INFO_FULL = gql`
+fragment RepositoryInfoFull on Repository {
+  ...RepositoryInfo,
+  url
+  reviews {
+    edges {
+      node {
+        id
+        text
+        rating
+        createdAt
+        user {
+          id
+          username
+        }
+      }
+    }
+  }
+}
+${REPOSITORY_INFO}
+`;
