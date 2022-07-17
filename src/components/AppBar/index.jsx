@@ -15,7 +15,6 @@ const styles = StyleSheet.create({
     display: "flex",
     paddingHorizontal: 5,
     alignItems: "center",
-    // gap: 20,
   },
   item: {
     padding: 15
@@ -33,6 +32,7 @@ const AppBar = () => {
         {!loading && (user ?
         <>
         <AppBarTab style={styles.item} title="Create a review" route="/review" />
+        <AppBarTab style={styles.item} title="My reviews" route="/reviews" />
         <AppBarTab style={styles.item} title={"Sign out"} route={"/signout"} />
         </>
           :

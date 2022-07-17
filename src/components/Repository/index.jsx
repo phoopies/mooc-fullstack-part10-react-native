@@ -1,10 +1,10 @@
-import { FlatList, View } from "react-native";
+import { View } from "react-native";
 import { useParams } from "react-router-native";
 import useRepository from "../../hooks/useRepository";
 import ItemSeparator from "../ItemSeperator";
 import RepositoryItem from "../RepositoryItem";
 import Text from "../Text"
-import ReviewItem from "./ReviewItem";
+import ReviewItemList from "../ReviewItemList";
 
 const Repository = () => {
     const { id } = useParams();
@@ -19,17 +19,13 @@ const Repository = () => {
     };
 
     return (
-        <FlatList
-            data={reviewNodes}
-            ItemSeparatorComponent={ItemSeparator}
-            renderItem={({ item }) => <ReviewItem review={item} />}
-            keyExtractor={({ id }) => id}
+        <ReviewItemList
+            onEndReached={onEndReached}
             ListHeaderComponent={(() => <View>
                 <RepositoryItem item={repository} displayButton={true} />
                 <ItemSeparator />
             </View>)}
-            onEndReached={onEndReached}
-            onEndReachedThreshold={0.5}
+            reviews={reviewNodes}
         />
     )
 }

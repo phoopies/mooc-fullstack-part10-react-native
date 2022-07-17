@@ -20,11 +20,10 @@ const ReviewItem = ({review}) => {
             marginHorizontal: 10,
             borderColor: theme.colors.secondary,
             borderWidth: 3,
-            textAlign: 'center',
             justifyContent: 'center',
         },
         ratingText: {
-            paddingBottom: 3,
+            textAlign: 'center'
         },
         text: {
             margin: 10,

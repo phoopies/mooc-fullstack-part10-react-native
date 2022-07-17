@@ -1,17 +1,32 @@
-import { useQuery } from "@apollo/client";
-import { GET_AUTHORIZED_USER } from "../graphql/queries";
-// import useSignIn from "./useSignIn";
-// import useSignOut from "./useSignOut";
+import { useQuery } from '@apollo/client';
+import { GET_AUTHORIZED_USER } from '../graphql/queries';
 
-const useAuthorizedUser = () => {
-    // const [signIn] = useSignIn();
-    // const [signOut] = useSignOut();
+const useAuthorizedUser = (variables) => {
+  const { data, loading, fetchMore } = useQuery(GET_AUTHORIZED_USER, {
+    fetchPolicy: 'cache-and-network',
+    variables,
+  });
 
-    const { data, loading } = useQuery(GET_AUTHORIZED_USER, {
-        fetchPolicy: "cache-and-network",
-    })
+  const handleFetchMore = () => {
+    const canFetchMore = !loading && data?.me.reviews.pageInfo.hasNextPage;
 
-    return {user : data ? data.me : undefined, loading, /*signIn, signOut*/};
-}
+    if (!canFetchMore) {
+      return;
+    }
+
+    fetchMore({
+      variables: {
+        ...variables,
+        reviewsAfter: data.me.reviews.pageInfo.endCursor,
+      },
+    });
+  };
+
+  return {
+    user: data ? data.me : undefined,
+    loading,
+    fetchMoreReviews: handleFetchMore,
+  };
+};
 
 export default useAuthorizedUser;
