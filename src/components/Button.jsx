@@ -7,24 +7,30 @@ const styles = StyleSheet.create({
   button: {
     backgroundColor: theme.colors.primary,
     color: theme.colors.textPrimary,
-    textAlign: 'center',
     borderRadius: 5,
     padding: 10,
+  },
+  text: {
+    textAlign: 'center',
   },
   colorSecondary: {
     backgroundColor: theme.colors.secondary,
   },
+  colorRed: {
+    backgroundColor: theme.colors.unwantedRed
+  }
 });
 
-const Button = ({ secondary, style, text, ...props }) => {
+const Button = ({ secondary, red, style, text, ...props }) => {
   const buttonStyle = [
     styles.button,
     secondary && styles.colorSecondary,
+    red && styles.colorRed,
     style,
   ];
 
   return <Pressable style={buttonStyle} {...props}>
-    {text && <Text fontSize='subheading'>{text}</Text>}
+    {text && <Text style={styles.text} fontSize='subheading'>{text}</Text>}
     </Pressable>;
 };
 

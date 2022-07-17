@@ -4,7 +4,7 @@ import useAuthorizedUser from "../../hooks/useAuthorizedUser";
 import ReviewItemList from "../ReviewItemList";
 
 const UserReviewList = () => {
-    const {user, loading, fetchMoreReviews} = useAuthorizedUser({reviewsFirst: 10, includeReviews: true});
+    const {user, loading, fetchMoreReviews, refetch} = useAuthorizedUser({reviewsFirst: 10, includeReviews: true});
 
     if (loading) return <Text>Loading...</Text>
 
@@ -14,6 +14,8 @@ const UserReviewList = () => {
         <ReviewItemList
             reviews={reviewNodes}
             onEndReached={fetchMoreReviews}
+            displayReviewButtons
+            refetchOnDelete={refetch}
         />
     )
 }

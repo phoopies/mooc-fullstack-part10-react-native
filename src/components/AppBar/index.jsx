@@ -9,7 +9,7 @@ const styles = StyleSheet.create({
   container: {
     marginTop: Constants.statusBarHeight,
     paddingVertical: 5,
-    backgroundColor: theme.colors.primary,
+    backgroundColor: theme.colors.appBarBackground,
   },
   scrollView: {
     display: "flex",
@@ -28,17 +28,17 @@ const AppBar = () => {
   return (
     <Stack row style={styles.container}>
       <ScrollView contentContainerStyle={styles.scrollView} horizontal>
-        <AppBarTab style={styles.item} title={"Repositories"} route={"/"} />
+        <AppBarTab style={styles.item} title="Repositories" route="/" />
         {!loading && (user ?
-        <>
-        <AppBarTab style={styles.item} title="Create a review" route="/review" />
-        <AppBarTab style={styles.item} title="My reviews" route="/reviews" />
-        <AppBarTab style={styles.item} title={"Sign out"} route={"/signout"} />
-        </>
+          <>
+            <AppBarTab style={styles.item} title="Create a review" route="/review" />
+            <AppBarTab style={styles.item} title="My reviews" route="/reviews" />
+            <AppBarTab style={styles.item} title="Sign out" route="/signout" />
+          </>
           :
-          <> 
-          <AppBarTab style={styles.item} title={"Sign in"} route={"/signin"} />
-          <AppBarTab style={styles.item} title="Sign up" route="/signup" /> 
+          <>
+            <AppBarTab style={styles.item} title="Sign in" route="/signin" />
+            <AppBarTab style={styles.item} title="Sign up" route="/signup" />
           </>
         )}
       </ScrollView>
