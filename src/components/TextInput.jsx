@@ -18,7 +18,7 @@ const styles = StyleSheet.create({
 const TextInput = ({ style, error, ...props }) => {
   const textInputStyle = [styles.textInput, error && styles.error, style];
 
-  return <NativeTextInput style={textInputStyle} {...props} />;
+  return <NativeTextInput placeholderTextColor={theme.colors.textSecondary} style={textInputStyle} {...props} />;
 };
 
 export default TextInput;

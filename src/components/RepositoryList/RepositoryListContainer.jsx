@@ -4,7 +4,7 @@ import ItemSeparator from "../ItemSeperator";
 import RepositoryItem from "../RepositoryItem";
 import Filterer from "./Filterer";
 
-const RepositoryListContainer = ({ repositories, orderBy, setOrderBy, orderByOptions, searchKeyword, setSearchKeyword }) => {
+const RepositoryListContainer = ({ repositories, onEndReach, orderBy, setOrderBy, orderByOptions, searchKeyword, setSearchKeyword }) => {
     const navigate = useNavigate();
     const onPress = (id) => {
         navigate(`/repository/${id}`);
@@ -14,7 +14,7 @@ const RepositoryListContainer = ({ repositories, orderBy, setOrderBy, orderByOpt
     const repositoryNodes = repositories
         ? repositories.edges.map((edge) => edge.node)
         : [];
-
+    
     return (
         <FlatList
             data={repositoryNodes}
@@ -29,6 +29,8 @@ const RepositoryListContainer = ({ repositories, orderBy, setOrderBy, orderByOpt
             renderItem={({ item }) => <Pressable onPress={() => onPress(item.id)}>
                 <RepositoryItem item={item} displayButton={false} />
             </Pressable>}
+            onEndReached={onEndReach}
+            onEndReachedThreshold={0.5}
         />
     );
 };

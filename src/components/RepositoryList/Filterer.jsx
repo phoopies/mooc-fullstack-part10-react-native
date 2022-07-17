@@ -1,12 +1,17 @@
 import { Picker } from "@react-native-picker/picker"
 import { StyleSheet } from "react-native"
+import theme from "../../theme"
 import Stack from "../Stack"
 import TextInput from "../TextInput"
 
 const styles = StyleSheet.create({
     picker: {
-        margin: 5,
-        padding: 5,
+        margin: 10,
+        padding: 10,
+        backgroundColor: theme.colors.backgroundSecondary,
+        color: theme.colors.textSecondary,
+        borderRadius: 3,
+        borderWidth: 0,
     },
     textInput: {
         margin: 10,

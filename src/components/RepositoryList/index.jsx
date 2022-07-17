@@ -13,7 +13,12 @@ const RepositoryList = () => {
   const [searchKeyword, setSearchKeyword] = useState("");
   const [debouncedSearchKeyword] = useDebounce(searchKeyword, 500);
 
-  const { repositories } = useRepositories({ ...options[orderBy], searchKeyword:debouncedSearchKeyword });
+  const onEndReach = () => { 
+    console.log("Reached end");
+    fetchMore(); 
+  }
+
+  const { repositories, fetchMore } = useRepositories({ first: 10, ...options[orderBy], searchKeyword: debouncedSearchKeyword });
 
   return (
     <RepositoryListContainer
@@ -22,6 +27,7 @@ const RepositoryList = () => {
       orderBy={orderBy} setOrderBy={setOrderBy}
       searchKeyword={searchKeyword}
       setSearchKeyword={setSearchKeyword}
+      onEndReach={onEndReach}
     />
   );
 };

@@ -14,24 +14,24 @@ export const REPOSITORY_INFO = gql`
   }
 `;
 
-export const REPOSITORY_INFO_FULL = gql`
-fragment RepositoryInfoFull on Repository {
-  ...RepositoryInfo,
-  url
-  reviews {
-    edges {
-      node {
-        id
-        text
-        rating
-        createdAt
-        user {
-          id
-          username
-        }
-      }
+export const REPOSITORY_REVIEW_INFO = gql`
+  fragment RepositoryReviewInfo on Review {
+    id
+    text
+    rating
+    createdAt
+    user {
+      id
+      username
     }
   }
-}
-${REPOSITORY_INFO}
+`;
+
+export const PAGE_INFO = gql`
+  fragment PageInfo on PageInfo {
+    hasPreviousPage
+    hasNextPage
+    startCursor
+    endCursor
+  }
 `;
