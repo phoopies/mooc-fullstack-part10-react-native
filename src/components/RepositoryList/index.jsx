@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useDebounce } from 'use-debounce';
 import useRepositories from "../../hooks/useRepositories";
 import RepositoryListContainer from "./RepositoryListContainer";
 
@@ -8,12 +9,20 @@ const RepositoryList = () => {
     "Highest rated": { orderBy: "RATING_AVERAGE", orderDirection: "DESC" },
     "Lowest rated": { orderBy: "RATING_AVERAGE", orderDirection: "ASC" },
   }
-
   const [orderBy, setOrderBy] = useState(Object.keys(options)[0]);
-  const { repositories } = useRepositories(options[orderBy]);
+  const [searchKeyword, setSearchKeyword] = useState("");
+  const [debouncedSearchKeyword] = useDebounce(searchKeyword, 500);
+
+  const { repositories } = useRepositories({ ...options[orderBy], searchKeyword:debouncedSearchKeyword });
 
   return (
-    <RepositoryListContainer repositories={repositories} orderByOptions={Object.keys(options)} setOrderBy={setOrderBy} />
+    <RepositoryListContainer
+      repositories={repositories}
+      orderByOptions={Object.keys(options)}
+      orderBy={orderBy} setOrderBy={setOrderBy}
+      searchKeyword={searchKeyword}
+      setSearchKeyword={setSearchKeyword}
+    />
   );
 };
 

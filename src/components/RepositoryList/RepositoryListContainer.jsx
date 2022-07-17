@@ -1,32 +1,10 @@
-import { FlatList, Pressable, StyleSheet } from "react-native";
-import { Picker } from '@react-native-picker/picker';
+import { FlatList, Pressable } from "react-native";
 import { useNavigate } from "react-router-native";
 import ItemSeparator from "../ItemSeperator";
 import RepositoryItem from "../RepositoryItem";
-import { useState } from "react";
+import Filterer from "./Filterer";
 
-const styles = StyleSheet.create({
-    picker: {
-        margin: 5,
-        padding: 5,
-    },
-})
-
-const OrderPicker = ({ setOrderBy, orderByOptions }) => {
-    const [selectedValue, setSelectedValue] = useState(orderByOptions[0]);
-
-    const onChange = (value) => { setSelectedValue(value); setOrderBy(value); }
-
-    return (<Picker
-        style={styles.picker}
-        selectedValue={selectedValue}
-        onValueChange={(itemValue) => onChange(itemValue)}
-    >
-        {orderByOptions.map(option => <Picker.Item key={option} label={option} value={option} />)}
-    </Picker>)
-}
-
-const RepositoryListContainer = ({ repositories, setOrderBy, orderByOptions }) => {
+const RepositoryListContainer = ({ repositories, orderBy, setOrderBy, orderByOptions, searchKeyword, setSearchKeyword }) => {
     const navigate = useNavigate();
     const onPress = (id) => {
         navigate(`/repository/${id}`);
@@ -40,7 +18,12 @@ const RepositoryListContainer = ({ repositories, setOrderBy, orderByOptions }) =
     return (
         <FlatList
             data={repositoryNodes}
-            ListHeaderComponent={<OrderPicker setOrderBy={setOrderBy} orderByOptions={orderByOptions} />}
+            ListHeaderComponent={<Filterer
+                searchKeyword={searchKeyword}
+                setSearchKeyword={setSearchKeyword}
+                orderBy={orderBy} setOrderBy={setOrderBy}
+                orderByOptions={orderByOptions}
+            />}
             ItemSeparatorComponent={ItemSeparator}
             keyExtractor={(item) => item.id}
             renderItem={({ item }) => <Pressable onPress={() => onPress(item.id)}>
